@@ -35,14 +35,15 @@ public class ListController {
     }
 
     @RequestMapping(value = "values")
-    public String listColumnValues(Model model, @RequestParam String column) {
+    public String listColumnValues(Model model, @RequestParam String column) {  //column is from list.html link <a href ...
 
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);
             return "list-jobs";
-        } else {
+        } else {                                                       // employer, position, location,  - /list/values?column=location from
+                                                              /// e.g list/jobs?column=location&value=Kansas%20City
             ArrayList<String> items = JobData.findAll(column);
             model.addAttribute("title", "All " + columnChoices.get(column) + " Values");
             model.addAttribute("column", column);
