@@ -35,7 +35,7 @@ public class ListController {
     }
 
     @RequestMapping(value = "values")
-    public String listColumnValues(Model model, @RequestParam String column) {  //column is from list.html link <a href ...
+    public String listColumnValues(Model model, @RequestParam String column) {
 
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
